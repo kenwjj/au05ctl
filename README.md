@@ -21,33 +21,35 @@ reads/writes those bindings directly.
 The "Voice Input / Confirm / Cancel / Switch Session" labels are just Ulanzi's default profile; the slots
 themselves can hold any hotkey.
 
-## Setup (Windows, Python 3.9+)
+## Setup (Windows, [uv](https://docs.astral.sh/uv/))
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt   # just hidapi
+uv sync        # creates .venv, installs hidapi + the `au05` command from uv.lock
 ```
+
+To install `au05` as a global command instead: `uv tool install .` (then run `au05 ...` from anywhere).
 
 ## Use
 
-`au05.cmd` is a launcher that uses the local `.venv`:
-
 ```powershell
-.\au05 show                       # read all slots from the device
-.\au05 apply --dry-run            # diff bindings.json against the device
-.\au05 apply                      # write changed slots, verify by read-back
-.\au05 set key2 "Ctrl+Alt+L"      # change one slot
-.\au05 dump mine.json             # save current device bindings
+uv run au05 show                       # read all slots from the device
+uv run au05 apply --dry-run            # diff bindings.json against the device
+uv run au05 apply                      # write changed slots, verify by read-back
+uv run au05 set key2 "Ctrl+Alt+L"      # change one slot
+uv run au05 dump mine.json             # save current device bindings
 ```
+
+`au05.cmd` wraps `uv run` and works from any folder: `C:\path\to\au05ctl\au05.cmd show`.
 
 ## Tests
 
 No hardware needed (real captured frames as vectors plus a fake HID device):
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.\.venv\Scripts\python.exe -m pytest
+uv run pytest
 ```
+
+CI (`.github/workflows/test.yml`) runs `uv sync --locked` and `uv run pytest` on every push.
 
 ## Claude Code skill
 

@@ -81,8 +81,13 @@ def main():
                                                                        au05.format_pairs(cur)))
 
 
-if __name__ == '__main__':
+def cli():
+    """Console-script entry point (`au05`)."""
     try:
         main()
     except (au05.DeviceError, ValueError) as e:
         sys.exit('error: %s' % e)
+
+
+if __name__ == '__main__':
+    cli()

@@ -5,11 +5,11 @@ description: Read or change the hotkeys of the user's Ulanzi AU05 Vibe Key (3 ke
 
 # au05ctl - program the Ulanzi AU05 from the command line
 
-Run everything from the repo root (normally `C:\Users\Kenwjj\au05ctl`) with the launcher `au05.cmd`
-(it uses the local `.venv`). First-time setup: `python -m venv .venv` then
-`.\.venv\Scripts\python.exe -m pip install -r requirements.txt`.
+The project uses **uv**. From the repo root (normally `C:\Users\Kenwjj\au05ctl`) run `uv sync` once, then use
+`uv run au05 <command>`. From any other folder use the launcher `C:\Users\Kenwjj\au05ctl\au05.cmd <command>`.
+If `au05` was installed globally (`uv tool install .`), plain `au05 <command>` works too.
 
-## Commands
+## Commands (prefix with `uv run`, e.g. `uv run au05 show`)
 | goal | command |
 |---|---|
 | read what is on the device | `au05 show` |
@@ -38,4 +38,4 @@ Modifiers: Ctrl Shift Alt Win (+ `R` prefix for right-hand). Mouse-wheel binding
 ## Don't
 - Don't write to the device without the user asking for a change; `show`/`dump`/`--dry-run` are read-only.
 - Don't hand-roll HID writes; the frame format is TEA-encrypted (see `docs/PROTOCOL.md`). Use `au05.py`.
-- Run `.\.venv\Scripts\python.exe -m pytest` after editing `au05.py`; tests need no hardware.
+- Run `uv run pytest` after editing `au05.py`; tests need no hardware. Add dependencies with `uv add`, never pip.
