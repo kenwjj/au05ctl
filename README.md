@@ -1,5 +1,7 @@
 # au05ctl
 
+[![tests](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml/badge.svg)](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml)
+
 Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without Ulanzi Studio.
 
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
