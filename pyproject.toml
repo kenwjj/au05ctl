@@ -4,6 +4,8 @@ version = "0.1.0"
 description = "Program an Ulanzi AU05 Vibe Key's hotkeys from a JSON file, without Ulanzi Studio"
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = ["hidapi>=0.14"]
 
 [project.scripts]

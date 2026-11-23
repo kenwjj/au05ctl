@@ -2,6 +2,7 @@
 
 [![tests](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml/badge.svg)](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml)
 ![python](https://img.shields.io/badge/python-3.12%2B-blue)
+[![license: MIT](https://img.shields.io/github/license/kenwjj/au05ctl)](LICENSE)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
 Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without Ulanzi Studio.
@@ -84,4 +85,4 @@ Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 key
 See [docs/PROTOCOL.md](docs/PROTOCOL.md) for the wire format and how it was derived.
 
 Tested on one AU05, firmware 4.6.3, Windows 10, Ulanzi Studio 3.x. Unofficial; not affiliated with Ulanzi.
-Use at your own risk.
+Use at your own risk. Licensed under the [MIT License](LICENSE).
