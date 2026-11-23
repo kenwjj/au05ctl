@@ -25,6 +25,8 @@ themselves can hold any hotkey.
 
 ## Setup (Windows, [uv](https://docs.astral.sh/uv/))
 
+Requires Python 3.12+ (uv fetches it automatically).
+
 ```powershell
 uv sync        # creates .venv, installs hidapi + the `au05` command from uv.lock
 ```
