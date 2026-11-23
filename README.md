@@ -5,7 +5,7 @@
 [![license: MIT](https://img.shields.io/github/license/kenwjj/au05ctl)](LICENSE)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
-Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without Ulanzi Studio.
+Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without [Ulanzi Studio](https://www.ulanzi.com/en-sg/pages/ulanzi-app).
 
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
 reads/writes those bindings directly.
@@ -75,7 +75,7 @@ Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 key
 ## Disclaimer and caveats about Ulanzi's software
 
 - **Unofficial.** This project is not made, endorsed or supported by Ulanzi. "Ulanzi", "Vibe Key", "AU05" and
-  "Ulanzi Studio" are trademarks of their owners; they are used here only to say which device this works with.
+  "[Ulanzi Studio](https://www.ulanzi.com/en-sg/pages/ulanzi-app)" are trademarks of their owners; they are used here only to say which device this works with.
 - **Reverse engineered for interoperability.** The wire protocol was worked out by observing Ulanzi Studio's
   traffic and reading the vendor library, so a device you own can be programmed without the app. No Ulanzi source
   code, binaries or assets are included. The fixed TEA key the device uses is a protocol constant and is published
