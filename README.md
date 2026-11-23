@@ -72,6 +72,24 @@ repo; copy the folder to `~/.claude/skills/` to use it from anywhere.
 Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 keys per slot, written like
 `Ctrl+Shift+]`, or in the raw Ulanzi form `E0|E1|30`. Edit `bindings.json` and run `apply`.
 
+## Disclaimer and caveats about Ulanzi's software
+
+- **Unofficial.** This project is not made, endorsed or supported by Ulanzi. "Ulanzi", "Vibe Key", "AU05" and
+  "Ulanzi Studio" are trademarks of their owners; they are used here only to say which device this works with.
+- **Reverse engineered for interoperability.** The wire protocol was worked out by observing Ulanzi Studio's
+  traffic and reading the vendor library, so a device you own can be programmed without the app. No Ulanzi source
+  code, binaries or assets are included. The fixed TEA key the device uses is a protocol constant and is published
+  in `docs/PROTOCOL.md`. If you are a rights holder and object to something here, open an issue.
+- **Studio and this tool fight over the device.** Studio steals the device's replies, and it re-pushes its own saved
+  profile whenever it connects, overwriting anything written here. Keep the two apart: close Studio before using
+  this tool, and update Studio's profile too if you want a change to survive launching it.
+- **No compatibility guarantee.** It was tested on one AU05 (firmware 4.6.3) with Ulanzi Studio 3.x. A firmware
+  or Studio update may change the protocol and break this tool, and other Ulanzi models are untested.
+- **You may void support.** Writing bindings outside the official app could affect warranty or support terms. Check
+  Ulanzi's terms before relying on it.
+- **Your risk.** Slot writes are verified by read-back and `--dry-run` previews changes, but the software is provided
+  "as is" under the [MIT License](LICENSE), with no warranty. Not legal advice.
+
 ## Requirements and limits
 
 - **Close Ulanzi Studio first.** Its read thread steals the device's replies (the tool refuses to run if it is open).
