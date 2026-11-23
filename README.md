@@ -10,6 +10,34 @@ Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, wit
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
 reads/writes those bindings directly.
 
+## Getting started
+
+Before either route: install [uv](https://docs.astral.sh/uv/), **quit Ulanzi Studio** and **wake the AU05** (press a key).
+
+**Option 1: Claude Code skill (recommended).** The skill backs up your bindings, previews changes and checks the
+preconditions for you.
+
+```powershell
+git clone https://github.com/kenwjj/au05ctl
+cd au05ctl
+claude
+```
+
+Then ask in plain language, for example "show my AU05 bindings" or "change key2 to Ctrl+Alt+L". The skill loads
+automatically inside this repo; see [Claude Code skill](#claude-code-skill) to use it from any folder.
+
+**Option 2: CLI.**
+
+```powershell
+git clone https://github.com/kenwjj/au05ctl
+cd au05ctl
+uv sync                           # installs hidapi and the `au05` command
+uv run au05 show                  # read the current bindings
+uv run au05 set key2 "Ctrl+Alt+L" # change a slot (verified by read-back)
+```
+
+See [CLI](#cli) for every command.
+
 ## Which slot is which
 
 ![AU05 slot map: knob on top, then key1 microphone, key2 check, key3 cross](docs/layout.svg)
@@ -36,7 +64,7 @@ uv sync        # creates .venv, installs hidapi + the `au05` command from uv.loc
 
 To install `au05` as a global command instead: `uv tool install .` (then run `au05 ...` from anywhere).
 
-## Use
+## CLI
 
 ```powershell
 uv run au05 show                       # read all slots from the device
@@ -46,7 +74,10 @@ uv run au05 set key2 "Ctrl+Alt+L"      # change one slot
 uv run au05 dump mine.json             # save current device bindings
 ```
 
-`au05.cmd` wraps `uv run` and works from any folder: `C:\path\to\au05ctl\au05.cmd show`.
+Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 keys per slot, written like
+`Ctrl+Shift+]`, or in the raw Ulanzi form `E0|E1|30`. Edit `bindings.json` and run `apply`.
+
+`au05.cmd` wraps `uv run` and works from any folder: `C:\path	ou05ctlu05.cmd show`.
 
 ## Tests
 
@@ -68,9 +99,6 @@ knob push, knob right (clockwise) = `knob_right`, knob left (counter-clockwise) 
 `.claude/skills/au05ctl/SKILL.md` teaches Claude Code to run this CLI safely (back up first, dry-run before
 apply, check Studio is closed and the device awake). It loads automatically when you open Claude Code in this
 repo; copy the folder to `~/.claude/skills/` to use it from anywhere.
-
-Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 keys per slot, written like
-`Ctrl+Shift+]`, or in the raw Ulanzi form `E0|E1|30`. Edit `bindings.json` and run `apply`.
 
 ## Disclaimer and caveats about Ulanzi's software
 
