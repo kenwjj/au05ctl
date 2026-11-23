@@ -1,7 +1,7 @@
 {
   "_comment": "Hotkeys for the Ulanzi AU05. Slots: key1/key2/key3 = the 3 keys, knob_press, knob_right, knob_left. Up to 4 keys per slot, e.g. Ctrl+Shift+]. Raw HID form also works: E0|E1|30. Omit a slot to leave it unchanged.",
   "bindings": {
-    "key1": "Ctrl+Shift",
+    "key1": "Ctrl+M",
     "key2": "NumPad Enter",
     "key3": "Esc",
     "knob_press": "Ctrl+N",
