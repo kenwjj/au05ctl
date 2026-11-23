@@ -77,7 +77,7 @@ uv run au05 dump mine.json             # save current device bindings
 Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 keys per slot, written like
 `Ctrl+Shift+]`, or in the raw Ulanzi form `E0|E1|30`. Edit `bindings.json` and run `apply`.
 
-`au05.cmd` wraps `uv run` and works from any folder: `C:\path	ou05ctlu05.cmd show`.
+`au05.cmd` wraps `uv run` and works from any folder: `C:\path\to\au05ctl\au05.cmd show`.
 
 ## Tests
 
