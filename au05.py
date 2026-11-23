@@ -15,8 +15,6 @@ The device must be awake; the dongle alone answers heartbeats but not slot comma
 import struct
 import time
 
-import hid
-
 VID, PID, USAGE_PAGE = 0xFFF1, 0x00DD, 0xFFFC
 REPORT_ID = 0x55
 KEY = struct.unpack('<4I', bytes.fromhex('cabaa5ca6d8a2abcba9e5acaca8bb89b'))
@@ -158,6 +156,7 @@ class DeviceError(RuntimeError):
 
 class AU05:
     def __init__(self):
+        import hid  # imported lazily so the pure functions/tests work without hidapi
         path = next((d['path'] for d in hid.enumerate(VID, PID) if d['usage_page'] == USAGE_PAGE), None)
         if path is None:
             raise DeviceError('AU05 dongle not found (VID FFF1 PID 00DD, usage page FFFC)')

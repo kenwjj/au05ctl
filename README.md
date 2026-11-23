@@ -5,22 +5,39 @@ Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, wit
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
 reads/writes those bindings directly.
 
-## Setup (Windows)
+## Setup (Windows, Python 3.9+)
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install hidapi
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt   # just hidapi
 ```
 
 ## Use
 
+`au05.cmd` is a launcher that uses the local `.venv`:
+
 ```powershell
-.\.venv\Scripts\python.exe au05ctl.py show                  # read all slots from the device
-.\.venv\Scripts\python.exe au05ctl.py apply --dry-run       # diff bindings.json against the device
-.\.venv\Scripts\python.exe au05ctl.py apply                 # write changed slots, verify by read-back
-.\.venv\Scripts\python.exe au05ctl.py set key2 "Ctrl+Alt+L" # change one slot
-.\.venv\Scripts\python.exe au05ctl.py dump mine.json        # save current device bindings
+.\au05 show                       # read all slots from the device
+.\au05 apply --dry-run            # diff bindings.json against the device
+.\au05 apply                      # write changed slots, verify by read-back
+.\au05 set key2 "Ctrl+Alt+L"      # change one slot
+.\au05 dump mine.json             # save current device bindings
 ```
+
+## Tests
+
+No hardware needed (real captured frames as vectors plus a fake HID device):
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pytest
+```
+
+## Claude Code skill
+
+`.claude/skills/au05ctl/SKILL.md` teaches Claude Code to run this CLI safely (back up first, dry-run before
+apply, check Studio is closed and the device awake). It loads automatically when you open Claude Code in this
+repo; copy the folder to `~/.claude/skills/` to use it from anywhere.
 
 Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 keys per slot, written like
 `Ctrl+Shift+]`, or in the raw Ulanzi form `E0|E1|30`. Edit `bindings.json` and run `apply`.
