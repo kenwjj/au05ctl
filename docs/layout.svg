@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" aria-labelledby="t d" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Ulanzi AU05 slot map</title>
+  <desc id="d">Knob on top (press, rotate left, rotate right = slots 3, 5, 4) above three buttons: key1 microphone, key2 check, key3 cross.</desc>
+  <rect width="640" height="440" rx="10" fill="#f6f7f9"/>
+
+  <!-- device body -->
+  <rect x="70" y="30" width="150" height="380" rx="12" fill="#e9eaec" stroke="#b8bbc2" stroke-width="2"/>
+  <rect x="90" y="46" width="110" height="14" rx="3" fill="#d3d5da"/>
+  <text x="145" y="86" text-anchor="middle" font-size="12" fill="#6b7078" letter-spacing="2">Ulanzi</text>
+
+  <!-- knob -->
+  <circle cx="145" cy="160" r="52" fill="#f7f7f8" stroke="#9aa0a8" stroke-width="2"/>
+  <circle cx="145" cy="160" r="30" fill="none" stroke="#c9ccd2" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <path d="M112 128 a46 46 0 0 1 66 0" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <polygon points="178,128 168,126 174,136" fill="#2563eb"/>
+
+  <!-- keys -->
+  <g stroke="#9aa0a8" stroke-width="2" fill="#f7f7f8">
+    <circle cx="145" cy="262" r="26"/>
+    <circle cx="145" cy="326" r="26"/>
+  </g>
+  <rect x="94" y="236" width="102" height="52" rx="8" fill="none" stroke="#e8b04a" stroke-width="1.5"/>
+  <!-- key 1: mic -->
+  <rect x="139" y="251" width="12" height="18" rx="6" fill="none" stroke="#444" stroke-width="2"/>
+  <path d="M134 264 a11 11 0 0 0 22 0 M145 275 v5" fill="none" stroke="#444" stroke-width="2"/>
+  <!-- key 2: check -->
+  <rect x="94" y="300" width="102" height="52" rx="8" fill="none" stroke="#e8b04a" stroke-width="1.5"/>
+  <circle cx="145" cy="326" r="12" fill="none" stroke="#444" stroke-width="2"/>
+  <path d="M139 326 l5 5 l9 -10" fill="none" stroke="#444" stroke-width="2"/>
+  <!-- key 3: cross -->
+  <circle cx="145" cy="390" r="26" fill="#f7f7f8" stroke="#9aa0a8" stroke-width="2"/>
+  <rect x="94" y="364" width="102" height="52" rx="8" fill="none" stroke="#e8b04a" stroke-width="1.5"/>
+  <circle cx="145" cy="390" r="12" fill="none" stroke="#444" stroke-width="2"/>
+  <path d="M139 384 l12 12 M151 384 l-12 12" stroke="#444" stroke-width="2"/>
+
+  <!-- leader lines -->
+  <g stroke="#9aa0a8" stroke-width="1.5">
+    <line x1="232" y1="160" x2="285" y2="160"/>
+    <line x1="232" y1="262" x2="285" y2="262"/>
+    <line x1="232" y1="326" x2="285" y2="326"/>
+    <line x1="232" y1="390" x2="285" y2="390"/>
+  </g>
+  <g fill="#9aa0a8"><circle cx="232" cy="160" r="3"/><circle cx="232" cy="262" r="3"/><circle cx="232" cy="326" r="3"/><circle cx="232" cy="390" r="3"/></g>
+
+  <!-- labels -->
+  <g fill="#1f2328">
+    <text x="295" y="120" font-size="15" font-weight="600">Knob</text>
+    <text x="295" y="144" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">knob_press</tspan>  (slot 3)  push</text>
+    <text x="295" y="166" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">knob_right</tspan>  (slot 4)  rotate right</text>
+    <text x="295" y="188" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">knob_left</tspan>   (slot 5)  rotate left</text>
+
+    <text x="295" y="258" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">key1</tspan>  (slot 0)  top button, microphone</text>
+    <text x="295" y="322" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">key2</tspan>  (slot 1)  middle button, check</text>
+    <text x="295" y="386" font-size="14"><tspan font-family="Consolas, monospace" font-weight="600">key3</tspan>  (slot 2)  bottom button, cross</text>
+  </g>
+  <text x="295" y="276" font-size="12" fill="#6b7078">Ulanzi default profile: Voice Input</text>
+  <text x="295" y="340" font-size="12" fill="#6b7078">Ulanzi default profile: Confirm</text>
+  <text x="295" y="404" font-size="12" fill="#6b7078">Ulanzi default profile: Cancel</text>
+  <text x="295" y="206" font-size="12" fill="#6b7078">Ulanzi default profile: Switch Session</text>
+</svg>

@@ -5,6 +5,22 @@ Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, wit
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
 reads/writes those bindings directly.
 
+## Which slot is which
+
+![AU05 slot map: knob on top, then key1 microphone, key2 check, key3 cross](docs/layout.svg)
+
+| slot name | id | physical control |
+|---|---|---|
+| `key1` | 0 | top button (microphone) |
+| `key2` | 1 | middle button (check) |
+| `key3` | 2 | bottom button (cross) |
+| `knob_press` | 3 | push the knob |
+| `knob_right` | 4 | rotate the knob right |
+| `knob_left` | 5 | rotate the knob left |
+
+The "Voice Input / Confirm / Cancel / Switch Session" labels are just Ulanzi's default profile; the slots
+themselves can hold any hotkey.
+
 ## Setup (Windows, Python 3.9+)
 
 ```powershell
