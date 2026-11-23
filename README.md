@@ -1,6 +1,8 @@
 # au05ctl
 
 [![tests](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml/badge.svg)](https://github.com/kenwjj/au05ctl/actions/workflows/test.yml)
+![python](https://img.shields.io/badge/python-3.12%2B-blue)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
 Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without Ulanzi Studio.
 
