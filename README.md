@@ -5,7 +5,7 @@
 [![license: MIT](https://img.shields.io/github/license/kenwjj/au05ctl)](LICENSE)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
-Program an **Ulanzi AU05 (Vibe Key)** hotkeys from a script and a JSON file, without [Ulanzi Studio](https://www.ulanzi.com/en-sg/pages/ulanzi-app).
+Program an **[Ulanzi AU05 (Vibe Key)](https://www.ulanzi.com/en-sg/products/au05-vibe-key-ai-voice-input-keypad-i018)** hotkeys from a script and a JSON file, without [Ulanzi Studio](https://www.ulanzi.com/en-sg/pages/ulanzi-app).
 
 The AU05 keeps its key/knob bindings in firmware. This tool talks to the dongle's vendor HID interface and
 reads/writes those bindings directly.
