@@ -55,6 +55,11 @@ uv run pytest
 
 CI (`.github/workflows/test.yml`) runs `uv sync --locked` and `uv run pytest` on every push.
 
+## Check the knob and keys on hardware
+
+`uv run python tools/keytest.py` opens a window that logs what the device types. Verified on hardware: key1/2/3,
+knob push, knob right (clockwise) = `knob_right`, knob left (counter-clockwise) = `knob_left`.
+
 ## Claude Code skill
 
 `.claude/skills/au05ctl/SKILL.md` teaches Claude Code to run this CLI safely (back up first, dry-run before
@@ -72,6 +77,7 @@ Slots: `key1 key2 key3 knob_press knob_right knob_left` (or `0..5`). Up to 4 key
   Symptom of a sleeping device: `no reply for slot N`.
 - Mouse-wheel bindings are not supported (format not captured).
 - Whether bindings survive a device power cycle has not been verified.
+- The device sends no live key events on the vendor interface; it types through its normal keyboard interface.
 
 See [docs/PROTOCOL.md](docs/PROTOCOL.md) for the wire format and how it was derived.
 
