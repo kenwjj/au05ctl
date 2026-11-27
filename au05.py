@@ -13,6 +13,7 @@ Slots     : 0,1,2 = the three keys; 3 = knob press; 4 = knob rotate right; 5 = k
 The device must be awake; the dongle alone answers heartbeats but not slot commands.
 """
 import struct
+import sys
 import time
 
 VID, PID, USAGE_PAGE = 0xFFF1, 0x00DD, 0xFFFC
@@ -156,12 +157,22 @@ class DeviceError(RuntimeError):
 
 class AU05:
     def __init__(self):
-        import hid  # imported lazily so the pure functions/tests work without hidapi
+        # imported lazily so the pure functions/tests work without hidapi
+        if sys.platform.startswith('linux'):
+            # the wheel's `hid` uses libusb, which reports usage_page 0 and detaches the kernel driver;
+            # `hidraw` reads usage pages from sysfs and talks to /dev/hidrawN
+            import hidraw as hid
+        else:
+            import hid
         path = next((d['path'] for d in hid.enumerate(VID, PID) if d['usage_page'] == USAGE_PAGE), None)
         if path is None:
             raise DeviceError('AU05 dongle not found (VID FFF1 PID 00DD, usage page FFFC)')
         self.dev = hid.device()
-        self.dev.open_path(path)
+        try:
+            self.dev.open_path(path)
+        except OSError as e:
+            raise DeviceError('cannot open %s (%s) - on Linux install udev/70-au05.rules or run as root'
+                              % (path.decode(errors='replace'), e))
 
     def close(self):
         self.dev.close()
