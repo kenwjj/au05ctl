@@ -32,6 +32,8 @@ def slot_label(i):
 
 
 def app_running():
+    if sys.platform != 'win32':  # tasklist is Windows-only, and Ulanzi Studio has no Linux build
+        return False
     out = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq UlanziDeck.exe', '/NH'], capture_output=True,
                          text=True).stdout
     return 'UlanziDeck.exe' in out

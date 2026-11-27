@@ -64,6 +64,20 @@ uv sync        # creates .venv, installs hidapi + the `au05` command from uv.loc
 
 To install `au05` as a global command instead: `uv tool install .` (then run `au05 ...` from anywhere).
 
+## Setup (Linux)
+
+Same `uv sync`. The vendor channel is a `/dev/hidrawN` node that only root can open by default, so install the
+udev rule once (it grants the logged-in user access to that one interface):
+
+```sh
+sudo install -m644 udev/70-au05.rules /etc/udev/rules.d/
+sudo udevadm control --reload && sudo udevadm trigger -s hidraw
+```
+
+On Linux the tool uses hidapi's `hidraw` backend; the default `hid` module in the hidapi wheel goes through libusb,
+which reports usage page 0 and cannot find the vendor interface. Ulanzi Studio does not exist on Linux, so the
+"Studio is running" check is skipped.
+
 ## CLI
 
 ```powershell
@@ -125,10 +139,10 @@ repo; copy the folder to `~/.claude/skills/` to use it from anywhere.
 - **The AU05 must be awake.** The dongle alone answers heartbeats; slot commands need the device itself.
   Symptom of a sleeping device: `no reply for slot N`.
 - Mouse-wheel bindings are not supported (format not captured).
-- Whether bindings survive a device power cycle has not been verified.
+- Bindings are stored on the device and survive a power cycle (verified on Linux).
 - The device sends no live key events on the vendor interface; it types through its normal keyboard interface.
 
 See [docs/PROTOCOL.md](docs/PROTOCOL.md) for the wire format and how it was derived.
 
-Tested on one AU05, firmware 4.6.3, Windows 10, Ulanzi Studio 3.x. Unofficial; not affiliated with Ulanzi.
-Use at your own risk. Licensed under the [MIT License](LICENSE).
+Tested on one AU05, firmware 4.6.3, Windows 10, Ulanzi Studio 3.x, and on another AU05 under Ubuntu 24.04
+(kernel 6.18). Unofficial; not affiliated with Ulanzi. Use at your own risk. Licensed under the [MIT License](LICENSE).
